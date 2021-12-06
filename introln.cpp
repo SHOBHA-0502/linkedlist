@@ -15,5 +15,6 @@ int main(){
     node*head = &n1;
     node n2(2);
     n1.next = &n2;
+    cout<<n1.data<<" "<< n2.data;
     
 }
