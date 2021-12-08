@@ -34,24 +34,22 @@ node* takeinput()
     }
     return head;
 }
- node*insertnode(node*head, int i , int data){
-    node*newnode = new node(data);//make node of new data
+ node* remove(node*head, int i ){
+    
     int count=0 ; 
-    node*temp = head;// to travers the linkedlist and to reach at i-2 ,temp is i-1;
-    if(i==0){
-        newnode->next = head;
-        head = newnode;
+    node*temp = head;
+    if(i==0){// if we want to remove first element 
+        head = head->next;// change head to next node 
         return head;
     }
-    while( temp != NULL && count <i-1){
+    while( temp != NULL && count <i-2){// for i not more than the size of linked list 
         temp = temp-> next;
         count++;
 
     }
     if(temp != NULL){
-    node*a = temp->next; // save the address which is in temp->next in a
-    temp->next = newnode;//now connect the node to first portion of link
-    newnode->next = a;// connect the node to back portion of the node 
+    node*a = temp->next->next; 
+    temp->next = a;
     }
     return head;
 }
@@ -68,11 +66,9 @@ int main()
 {
     node*head = takeinput();
     print(head);
-    int i , data;
-    cin>>i>>data;
-    head = insertnode(head,i,data);
+    int i;
+    cin>>i;
+    head = remove(head,i);
     print(head);
-
-
 
 }
